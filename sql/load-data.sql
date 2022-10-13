@@ -121,4 +121,4 @@ WITH
 );
 
 ALTER TABLE countries 
-ADD "id" int IDENTITY(1,1) PRIMARY KEY
+ADD "id" int IDENTITY(1,1) PRIMARY KEY;
