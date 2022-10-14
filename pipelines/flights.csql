@@ -1,0 +1,42 @@
+-- pk: id
+
+with
+   
+    stg_openflights_conn_routes as (
+        SELECT
+            stg.id as id,
+            stg.airline as airline,
+            stg.airline_id as airline_id,
+            lkp_airlines.name as airlines_name,
+            stg.src_ap as src_ap,
+            stg.src_apid as src_apid,
+            (SELECT lkp_airport.name
+                FROM stg_openflights_conn_airports as lkp_airport
+                WHERE lkp_airport.airport_id = stg.src_apid
+            ) as airport_src_name,           
+            stg.dst_ap as dst_ap,
+            stg.dst_apid as dst_apid,
+            (SELECT lkp_airport.name
+                FROM stg_openflights_conn_airports as lkp_airport
+                WHERE lkp_airport.airport_id = stg.dst_apid
+            ) as airport_des_name,
+            stg.codeshare as codeshare,
+            stg.stops as stops,
+            stg.equipment as equipment,
+                  
+        ROW_NUMBER() OVER(PARTITION BY stg.id ORDER BY stg.mdmCounterForEntity DESC) AS ranking,
+
+            --metadata--
+        FROM stg_openflights_conn_routes as stg
+        LEFT JOIN stg_openflights_conn_airlines as lkp_airlines
+                ON lkp_airlines.airline_id = stg.airline_id
+    --timestamp-- WHERE mdmCounterForEntity > {{start_FROM}}
+    ),
+
+    flights as (
+        SELECT * FROM stg_openflights_conn_routes where ranking = 1
+    )
+
+SELECT * except(ranking)
+FROM flights
+

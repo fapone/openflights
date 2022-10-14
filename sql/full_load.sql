@@ -1,7 +1,7 @@
 -- Create and load Airlines database
 DROP TABLE IF EXISTS "airlines";
 CREATE TABLE "airlines" (
-  "airline_id" int PRIMARY KEY,
+  "airline_id" nvarchar(100),
   "name" varchar(255),
   "alias" varchar(255),
   "iata" varchar(225),
@@ -22,10 +22,13 @@ WITH
     FORMAT = 'CSV'
 );
 
+ALTER TABLE airlines 
+ADD "id" int IDENTITY(1,1) PRIMARY KEY;
+
 -- Create and load Airport database
 DROP TABLE IF EXISTS "airports";
 CREATE TABLE "airports" (
-	"airport_id" int PRIMARY KEY,  
+	"airport_id" nvarchar(100),  
 	"name" varchar(255),
 	"city" varchar(255),
 	"country" varchar(255),
@@ -51,6 +54,9 @@ WITH
     TABLOCK,
     FORMAT = 'CSV'
 );
+
+ALTER TABLE airports 
+ADD "id" int IDENTITY(1,1) PRIMARY KEY;
 
 -- Create and load Route database
 DROP TABLE IF EXISTS "routes";
@@ -80,6 +86,7 @@ WITH
 ALTER TABLE routes 
 ADD "id" int IDENTITY(1,1) PRIMARY KEY;
 
+/*
 -- Create and load Planes database
 DROP TABLE IF EXISTS "planes";
 CREATE TABLE "planes" (
@@ -122,3 +129,4 @@ WITH
 
 ALTER TABLE countries 
 ADD "id" int IDENTITY(1,1) PRIMARY KEY;
+*/
