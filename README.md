@@ -24,7 +24,7 @@ Instalação do ELT 2c <br>
  Obs: Foi identificado no momento da instalação a necessidade de alterar a porta do container para 1434, visto que a porta padrão para rodar o SQL Server é 1433 <br><br> 
 
 Ao final das configurações dos Containers, teremos o seguinte: <br>
-![image](https://user-images.githubusercontent.com/32913011/195872338-58f71ca4-8d2f-4a17-b78b-81cb4c1f21ab.png) <<br>
+![image](https://user-images.githubusercontent.com/32913011/195872338-58f71ca4-8d2f-4a17-b78b-81cb4c1f21ab.png) <br>
 
 Criação das tabelas no SQL Server a partir dos arquivos .DAT. <br>
 
