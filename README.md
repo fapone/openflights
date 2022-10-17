@@ -29,7 +29,7 @@ Ao final das configurações dos Containers, teremos o seguinte: <br>
 Criação das tabelas no SQL Server a partir dos arquivos .DAT. <br>
 
 Para criar os scripts foi necessário seguir os seguintes passos: <br>
- 1 - Renomear os arquivos .DAT para .CSV;
- 2 - Copiar os arquivos .CSV para /data dentro do Container do SQL Server através do comando
+ 1 - Renomear os arquivos .DAT para .CSV; <br>
+ 2 - Copiar os arquivos .CSV para /data dentro do Container do SQL Server através do comando <br>
 
  
